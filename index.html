@@ -43,6 +43,21 @@ function sendToWhatsApp() {
 
   errorMsg.innerHTML = "";
 
+  // Mandatory field validation
+
+  if (
+      name === "" ||
+      email === "" ||
+      subject === "" ||
+      mobile === "" ||
+      message === ""
+     ) {
+
+    errorMsg.innerHTML = "Please fill all fields.";
+
+    return;
+  }
+
   // Gmail validation
 
   let emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
@@ -106,7 +121,7 @@ function sendToWhatsApp() {
         <div class="info-content">
           <h1 class="name" title="Gunasekaran">Gunasekaran M</h1>
 
-          <p class="title">B.Tech IT Student</p>
+          <p class="title">B.Tech IT Student (Final Year)</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -808,11 +823,37 @@ My friend Gunasekaran really loves Java programming and his always interested in
         </a>
 
       </li>
+      <!-- NPTEL CERTIFICATE -->
+       <li class="project-item active"
+          data-filter-item
+          data-category="applications">
 
+        <a href="./assets/files/NPTEL_CERTIFICATE.pdf"
+           target="_blank">
 
-      
+          <figure class="project-img">
 
+            <div class="project-item-icon-box">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </div>
 
+            <img src="./assets/images/nptel_image.jpg"
+                 alt="NPTEL Certificate"
+                 loading="lazy">
+
+          </figure>
+
+          <h3 class="project-title">
+            NPTEL Certificate
+          </h3>
+
+          <p class="project-category">
+           NPTEL Certificate
+          </p>
+
+        </a>
+
+      </li>
       <!-- IEEE Paper -->
 
       <li class="project-item active"
