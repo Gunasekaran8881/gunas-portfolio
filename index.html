@@ -31,6 +31,10 @@
 </head>
 <script>
 
+//=============================
+// WhatsApp Contact Form
+//=============================
+
 function sendToWhatsApp() {
 
   let name = document.getElementById("name").value.trim();
@@ -44,7 +48,6 @@ function sendToWhatsApp() {
   errorMsg.innerHTML = "";
 
   // Mandatory field validation
-
   if (
       name === "" ||
       email === "" ||
@@ -54,48 +57,79 @@ function sendToWhatsApp() {
      ) {
 
     errorMsg.innerHTML = "Please fill all fields.";
-
     return;
   }
 
   // Gmail validation
-
   let emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
   if (!emailPattern.test(email)) {
-
-    errorMsg.innerHTML =
-      "Enter a valid Gmail address.";
-
+    errorMsg.innerHTML = "Enter a valid Gmail address.";
     return;
   }
 
   // Mobile validation
-
   let mobilePattern = /^[0-9]{10}$/;
 
   if (!mobilePattern.test(mobile)) {
-
-    errorMsg.innerHTML =
-      "Enter a valid 10-digit mobile number.";
-
+    errorMsg.innerHTML = "Enter a valid 10-digit mobile number.";
     return;
   }
 
   // WhatsApp Message
-
   let phoneNumber = "919677904695";
 
   let url = "https://wa.me/" + phoneNumber +
             "?text=" +
-            "Full Name: " + name + "%0a" +
-            "Email Address: " + email + "%0a" +
-            "Subject: " + subject + "%0a" +
-            "Mobile Number: " + mobile + "%0a" +
-            "Message: " + message;
+            "Full Name: " + encodeURIComponent(name) + "%0A" +
+            "Email Address: " + encodeURIComponent(email) + "%0A" +
+            "Subject: " + encodeURIComponent(subject) + "%0A" +
+            "Mobile Number: " + encodeURIComponent(mobile) + "%0A" +
+            "Message: " + encodeURIComponent(message);
 
   window.open(url, "_blank");
 }
+
+
+//=============================
+// Image Popup (Lightbox)
+//=============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const popup = document.getElementById("imagePopup");
+    const popupImg = document.getElementById("popupImg");
+    const closeBtn = document.querySelector(".close");
+
+    const images = document.querySelectorAll(".program-gallery img");
+
+    images.forEach(function(img){
+
+        img.addEventListener("click", function(){
+
+            popup.style.display = "block";
+            popupImg.src = this.src;
+            popupImg.alt = this.alt;
+
+        });
+
+    });
+
+    closeBtn.addEventListener("click", function(){
+
+        popup.style.display = "none";
+
+    });
+
+    popup.addEventListener("click", function(e){
+
+        if(e.target === popup){
+            popup.style.display = "none";
+        }
+
+    });
+
+});
 
 </script>
 <body>
@@ -235,36 +269,41 @@ function sendToWhatsApp() {
     <div class="main-content">
 
       <!--
-        - #NAVBAR
-      -->
+  - #NAVBAR
+-->
 
-      <nav class="navbar">
+<nav class="navbar">
 
-        <ul class="navbar-list">
+  <ul class="navbar-list">
 
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
+    <li class="navbar-item">
+      <button class="navbar-link active" data-nav-link>About</button>
+    </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link>Resume</button>
+    </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
+    <!-- NEW MENU -->
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link>Programs</button>
+    </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link>Portfolio</button>
+    </li>
 
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link>Blog</button>
+    </li>
 
-        </ul>
+    <li class="navbar-item">
+      <button class="navbar-link" data-nav-link>Contact</button>
+    </li>
 
-      </nav>
+  </ul>
+
+</nav>
 
 
 
@@ -701,7 +740,136 @@ My friend Gunasekaran really loves Java programming and his always interested in
 
       </article>
 
+<!--
+  - #PROGRAMS
+-->
 
+<article class="programs" data-page="programs">
+
+  <header>
+    <h2 class="h2 article-title">Students Technical Skills Development Program</h2>
+  </header>
+
+  <!-- About Program -->
+  <section class="about-text">
+
+    <p>
+      I actively organize and Independently conduct the Students Technical Skills Development Program for school students at Islamiah Boys Higher Secondary School , Melvisharam , Ranipet. To enhance their Python programming knowledge, problem-solving skills, and awareness of Computer basics in Information Technology.
+    </p>
+
+  </section>
+
+  <!-- Topics Covered -->
+  <section class="service">
+
+    <h3 class="h3 service-title">Topics Covered</h3>
+
+    <ul class="service-list">
+
+      <li class="service-item">
+
+        <div class="service-icon-box">
+          <ion-icon name="desktop-outline"></ion-icon>
+        </div>
+
+        <div class="service-content-box">
+
+          <h4 class="h4 service-item-title">Python Programming</h4>
+
+          <p class="service-item-text">
+            Introduction to Python & its History, Data types, Operators, Conditional statements, loops, and practical coding.
+          </p>
+
+        </div>
+
+      </li>
+
+      <li class="service-item">
+
+        <div class="service-icon-box">
+          <ion-icon name="code-slash-outline"></ion-icon>
+        </div>
+
+        <div class="service-content-box">
+
+          <h4 class="h4 service-item-title">Learning Outcomes</h4>
+
+<ul class="service-item-text">
+  <li>Understood the basics of Python programming.</li>
+  <li>Learned to write simple Python programs.</li>
+  <li>Gained knowledge of variables, data types, operators, and control statements.</li>
+  <li>Developed basic logical and problem-solving skills.</li>
+  <li>Built confidence in writing and executing Python code.</li>
+  <li>Motivated to explore advanced programming concepts in the future.</li>
+</ul>
+
+        </div>
+
+      </li>
+
+      <li class="service-item">
+
+        <div class="service-icon-box">
+          <ion-icon name="school-outline"></ion-icon>
+        </div>
+
+        <div class="service-content-box">
+
+          <h4 class="h4 service-item-title">Career Guidance</h4>
+
+          <p class="service-item-text">
+            Guidance on higher education, internships, IT careers and skill development.
+          </p>
+
+        </div>
+
+      </li>
+
+    </ul>
+
+  </section>
+
+  <!-- Program Highlights -->
+
+<section class="service">
+
+  <h3 class="h3 service-title">Program Highlights</h3>
+
+  <div class="program-gallery">
+
+    <img src="./assets/images/lecturer_image1.jpeg" alt="Lecturer Image 1">
+    <img src="./assets/images/lecturer_image2.jpeg" alt="Lecturer Image 2">
+
+    <img src="./assets/images/listening_image1.jpeg" alt="Students Listening 1">
+    <img src="./assets/images/listening_image2.jpeg" alt="Students Listening 2">
+
+    <img src="./assets/images/test_image1.jpeg" alt="Writing Test1">
+        <img src="./assets/images/test_image2.jpeg" alt="Writing Test2">
+    <img src="./assets/images/test_image3.jpeg" alt="Writing Test3">
+        <img src="./assets/images/test_image4.jpeg" alt="Writing Test">
+
+
+
+    <img src="./assets/images/student1.jpeg" alt="Individual Test Student 1">
+
+    <img src="./assets/images/student2.jpeg" alt="Individual Test Student 2">
+
+    <img src="./assets/images/student3.jpeg" alt="Individual Test Student 3">
+
+    <img src="./assets/images/photo_IX_D.jpeg" alt="Group Photo 1">
+
+    <img src="./assets/images/photo_X_D.jpeg" alt="Group Photo 2">
+
+    <img src="./assets/images/photo_X_E.jpeg" alt="Group Photo 3">
+
+    <img src="./assets/images/photo_XII_B.jpeg" alt="Group Photo 4">
+        <img src="./assets/images/headmaster.jpeg" alt="Group Photo 4">
+
+
+  </div>
+
+</section>
+</article>
 
 
 
@@ -1207,6 +1375,11 @@ Whenever I face a coding problem, I don’t rush to write code immediately. I fi
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <!-- Image Popup -->
+<div id="imagePopup" class="popup">
+    <span class="close">&times;</span>
+    <img class="popup-content" id="popupImg">
+</div>
 
 </body>
 
