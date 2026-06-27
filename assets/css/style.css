@@ -1971,3 +1971,46 @@ textarea.form-input::-webkit-resizer { display: none; }
 .program-gallery img:hover{
     transform:scale(1.05);
 }
+.gallery-item figcaption {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;           /* White text */
+    text-align: center;
+    line-height: 1.5;
+}
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:320px;
+    background:#1e1e1f;
+    border:1px solid #383838;
+    border-radius:14px;
+    list-style:none;
+    padding:8px 0;
+    z-index:1000;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+.dropdown-menu li a{
+    display:block;
+    padding:12px 18px;
+    color:#fafafa;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+.dropdown-menu li a:hover{
+    background:#f5c842;
+    color:#000;
+}
